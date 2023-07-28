@@ -117,11 +117,16 @@ main {
   width: auto;
 }
 
-/*hobbyの装飾*/
-.hobby{
+/*worksの装飾*/
+.works{
   text-align: center;
   padding-bottom: 500px;
   background-image: url(images/p0476_s.jpg);
+}
+
+.works p{
+  font-size: 20px;
+  line-height: 1.7;
 }
 
 /*contactの装飾*/
@@ -420,6 +425,7 @@ table {
   text-align: center;
 }
 
+/*
 .button01, .button02, .button03{
   display: inline-block;
   margin-right: 10px;
@@ -435,6 +441,7 @@ table {
   font-weight: 600;
   font-size: 1em;
 }
+*/
 
 .button01:hover{
   background-color: #66CCFF;
@@ -449,4 +456,40 @@ table {
 .button03:hover{
   background-color: #424242;
   transition: .5s;
+}
+
+
+
+.button01, .button02, .button03{
+  background:#2e3651;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
 }
