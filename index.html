@@ -8,21 +8,19 @@
   <title> Portfolio </title>
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modaal@0.4.4/dist/css/modaal.min.css">
 </head>
 
 <body>
-  <div class="wrapper">
-    <div class="header-box"></div>
+  <div class="header-box"></div>
   <header class="header">
     <div class="header__inner">
       <h1 class="header__title header-title">
-        <a href="#">
-          <img src="images/logo.png" alt="ロゴ画像">
-        </a>
+        <a href="index.html"><img src="images/logo.png" alt="ロゴ画像"></a>
       </h1>
 
       <nav class="header__nav nav" id="js-nav">
-        <ul class="nav__items nav-items">
+        <ul class="nav__items nav-items" id="js-link">
           <li class="nav-items__item"><a href="index.html">Home</a></li>
           <li class="nav-items__item"><a href="#about-me">About</a></li>
           <li class="nav-items__item"><a href="#skills">Skills</a></li>
@@ -37,30 +35,28 @@
         <span></span>
         <span></span>
       </button>
+
     </div>
   </header>
 
   <main>
-    <div class="top">
-      <image src="images/top_01.jpeg" alt="top">
-    </div>
+    <div class="top"><image src="images/top_01.jpeg" alt="top"></div>
 
-    <div class="about-me" id="about-me">
-      <div class="title-text fadein" id="js-title">
-        About me
-      </div>
+    <div class="about-me fadein" id="about-me">
+      <div class="title-text" id="js-title">About me</div>
       <div class="fuwafuwa"></div>
       <p>
         origami a.k.a lati<br>
-        ポートフォリオサイトを作成しました<br>
-        群馬高専出身<br>
-        21年間群馬に住んでます<br>
-        トイプードル2匹飼ってます(茶色,黒色)<br>
-        10年間水泳してました(市大会優勝、県大会最高2位→北関東大会出場)<br>
-        好きなゲーム・・・ゼノブレイドシリーズ ピクミン<br>
-        他にもいろんなゲームしてます(SSBU VALORANT etc...)<br>
+        2002年群馬生まれ<br>
+        群馬高専卒業<br>
+        大学編入生<br>
+        ゲーム、ドライブ、ラーメン好き<br>
+        トイプードル2匹飼ってます<br><br>
+        <td>
+          <a href="https://github.com/lati0502" target="_blank"> <img src="images/github-mark.png" alt="github" width="30" height="30"></a>
+          <a href="https://twitter.com/Lati_nkny52" target="_blank"> <img src="images/Twitter social icons - rounded square - blue.png" alt="github" width="30" height="30"></a>
+        </td>
       </p>
-
     </div>
 
     <div class="skills" id="skills">
@@ -94,10 +90,11 @@
           <div class="skill-container">
             <img class="python" src="images/python.png" alt="pythonアイコン">
             <h2>Python</h2>
-            <h3><span class="star5_rating" data-rate="3"></span></h3>
+            <h3><span class="star5_rating" data-rate="4"></span></h3>
             <p>
-              Pythonは完全に趣味です。
-              具体的にはmatplotlibやDiscord botの作成に使用しています。
+              私が学習した言語で最もよく使います。
+              スクレイピングを利用した自動ログインシステムやYahoo newsを取得するものを作成しました。
+              (詳細はgithub)
             </p>
           </div>
         </div>
@@ -155,48 +152,121 @@
             </p>
           </div>
         </div>
-        <div class="skill fadein">
-          <div class="skill-container">
-            <img class="discord" src="images/discord-mark-black.png" alt="discordアイコン">
-            <h2>Discord bot</h2>
-            <h3><span class="star5_rating" data-rate="3"></span></h3>
-            <p>
-              Discord botを作成しています。
-            </p>
-          </div>
-        </div>
       </div>
     </div>
 
-    <div class="works" id="works">
-      <div class="title-text">
-        Works
-      </div>
+    <div class="works fadein" id="works">
+      <div class="title-text">Works</div>
       <p>
-        これまでの作品について<br>
+        これまで作成したもの<br>
         高専時代から今まで以下のようなものを作成しました。<br>
       </p>
+      <div class="works-container">
+        <div class="work-container">
+          <a href="https://origami.pythonanywhere.com/" target="_blank"><img class="todo" src="images/todo.png" alt="todo"></a>
+          <div class="work-title">Todoリスト</div>
+          <div class="detail">
+            <a href="https://github.com/lati0502/todo" target="_blank"> <img src="images/github-mark.png" alt="github" width="30" height="30"></a><br>
+            <a href="" class="js_modalBtnCont" data-modal-btn="modal01"><img src="images/detail.png" width="30" height="30"><span class="hp_pc"></span><span class="hp_sp"></span></a>
+            <!-- モーダル（ポップアップ）の内容 -->
+            <div class="js_modalWrap" data-modal-cont="modal01">
+              <div class="js_modalBG"></div>
+              <div class="js_modalContInner">
+                <span class="js_modalClose"></span>
+                <div class="js_modalCont">
+                <p>Djangoを使用しています。課題等の管理のために作成しました。</p>
+              </div>
+              </div>
+            </div>
+            <!-- //モーダル（ポップアップ）の内容 -->
+          </div>
+        </div>
+
+        <div class="work-container">
+          <a href="#" target="_blank"><img class="auto" src="images/auto.png" alt="auto"></a>
+          <div class="work-title">大学システム自動ログイン</div>
+          <div class="detail">
+            <a href="https://github.com/lati0502/code" target="_blank"> <img src="images/github-mark.png" alt="github" width="30" height="30"></a><br>
+            <a href="" class="js_modalBtnCont" data-modal-btn="modal02"><img src="images/detail.png" width="30" height="30"><span class="hp_pc"></span><span class="hp_sp"></span></a>
+            <!-- モーダル（ポップアップ）の内容 -->
+            <div class="js_modalWrap" data-modal-cont="modal02">
+              <div class="js_modalBG"></div>
+              <div class="js_modalContInner">
+                <span class="js_modalClose"></span>
+                <div class="js_modalCont">
+                <p>selenium、GmailAPIを使用しています。大学のシステムのログインが大変だったので自動化しました。</p>
+              </div>
+              </div>
+            </div>
+            <!-- //モーダル（ポップアップ）の内容 -->
+          </div>
+        </div>
+
+        <div class="work-container">
+          <a href="#" target="_blank"><img class="oni" src="images/oni.png" alt="oni"></a>
+          <div class="work-title">対戦型鬼ごっこ</div>
+          <div class="detail">
+            <a href="https://github.com/lati0502/code" target="_blank"> <img src="images/github-mark.png" alt="github" width="30" height="30"></a><br>
+            <a href="" class="js_modalBtnCont" data-modal-btn="modal03"><img src="images/detail.png" width="30" height="30"><span class="hp_pc"></span><span class="hp_sp"></span></a>
+            <!-- モーダル（ポップアップ）の内容 -->
+            <div class="js_modalWrap" data-modal-cont="modal03">
+              <div class="js_modalBG"></div>
+              <div class="js_modalContInner">
+                <span class="js_modalClose"></span>
+                <div class="js_modalCont">
+                <p>Unityを使用しました。高専時代のグループごとに何かをつくるという大規模実験においてゲームをつくる+サーバーとの通信で合致したメンバーと作成しました。3ヶ月という短い期間だったのでやりかったことすべてを実装はできなかったので、人vsコンピュータという形になりました。</div>
+                </p>
+              </div>
+              </div>
+            </div>
+            <!-- //モーダル（ポップアップ）の内容 -->
+          </div>
+        </div>
+
+      </div>
     </div>
 
     <div class="contact" id="contact">
       <div class="title-text">
         CONTACT
       </div>
-      <div class="contact-button">
-        <td>
-          <button class="button01" id="js-twitter">Twitter</button>
-          <button class="button02" id="js-instagram">Instagram</button>
-          <button class="button03" id="js-github">Github</button>
-        </td>
-      </div>
+      <form action="contact.php" method="POST">
+        <div class="Form">
+          <div class="Form-Item">
+            <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>お名前</p>
+            <input type="text" class="Form-Item-Input" placeholder="例）山田太郎">
+          </div>
+          <div class="Form-Item">
+            <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>電話番号</p>
+            <input type="text" class="Form-Item-Input" placeholder="例）000-0000-0000">
+          </div>
+          <div class="Form-Item">
+            <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>メールアドレス</p>
+            <input type="email" class="Form-Item-Input" placeholder="例）example@gmail.com">
+          </div>
+          <div class="Form-Item">
+            <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>お問い合わせ内容</p>
+            <textarea class="Form-Item-Textarea"></textarea>
+          </div>
+          <input type="submit" class="Form-Btn" value="送信する">
+        </div>
+      </form>
     </div>
-  </main>
-  </div>
 
-  <footer class="footer">
-    <p>Portfolio WebSite</p>
+  </main>
+
+  <footer>
+    <div class="footer">
+      <p>Thank you for coming!</p>
+      <p class="copyright">
+        &copy; 2023 My Site
+      </p>
+    </div>
   </footer>
 
+
+  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.min.js"></script>
   <script src="main.js"></script>
 </body>
 

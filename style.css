@@ -2,8 +2,19 @@
 
 /* 調整用スタイル */
 html{
-  scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: visible;
+  /*scroll smooth使うな javascriptでかけ*/
+  /*overflow-xは使うな*/
+}
+
+body{
+  margin: 0;
+  overflow-y: scroll;
+}
+
+body.scrollLock {
+  position: fixed;
+  width: 100%;
 }
 
 a {
@@ -19,52 +30,52 @@ h2{
   font-size: 20px;
 }
 
-main {
+/*
+  main {
   height: 800px;
   /*
   display: flex;
   content: center;
   */
+  /*
   color: #424242;
   background-image: url(images/p0499_m.jpg);
   /*
   background-size: 100% auto;
   background-repeat: repeat;
   background-attachment: fixed;
-  */
-}
+  }
+*/
 
 .top img{
   width: 100%;
   max-height: 700px;
+  z-index: 0;
 }
 
 /*各段落ごとのタイトルの規定*/
 .title-text{
   text-align: center;
-  padding: 40px;
+  padding: 50px;
   font-size: 40px;
 }
 
-.fadein{
-  animation: fadein 3s ease-out forwards;
+.fadein {
+  transition: 1s;
+  opacity: 0;
 }
 
-@keyframes fadein {
-  0% {
-    opacity: 0
-  }
-  100% {
-    opacity: 1
-  }
+.fadein.animated {
+  opacity: 1;
 }
 
 /*about me部分の装飾*/
 .about-me{
   text-align: center;
-  padding-bottom: 200px;
+  padding-bottom: 50px;
   font-size: 20px;
   background-image: url(images/p0474_s.jpg);
+  z-index: 0;
 }
 
 .about-me p{
@@ -74,12 +85,12 @@ main {
 /*skill部分の装飾*/
 .skills{
   text-align: center;
-  padding-bottom: 200px;
+  padding-bottom: 50px;
   background-image: url(images/p0116_s.jpg);
 }
 
 .skills-container{
-  width: 940px;
+  width: 90%;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -87,8 +98,8 @@ main {
 }
 
 .skill{
-  width: 300px;
-  height: 400px;
+  width: 250px;
+  height: 420px;
   background-color: white;
   margin-bottom: 45px;
   border-radius: 5px;
@@ -120,7 +131,7 @@ main {
 /*worksの装飾*/
 .works{
   text-align: center;
-  padding-bottom: 500px;
+  padding-bottom: 50px;
   background-image: url(images/p0476_s.jpg);
 }
 
@@ -129,24 +140,379 @@ main {
   line-height: 1.7;
 }
 
+.works-container{
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.work-container{
+  margin: 30px;
+}
+
+.work-title{
+  font-size: 20px;
+  margin-bottom: 1.0rem;
+}
+
+.detail {
+  display: flex;
+  justify-content: center;
+}
+
+.todo, .auto, .oni{
+  padding: 20px;
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.todo:hover, .auto:hover, .oni:hover{
+	transform:scale(1.1);
+	transition:0.3s;
+}
+
+
+/* ==========================
+  モーダル（ポップアップ）
+========================== */
+.js_modalBtnWrap {
+  width: 300px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+.js_modalBtnCont {
+  display: block;
+}
+.js_modalWrap {
+  opacity: 0;
+  z-index: -1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.js_modalWrap.active {
+  animation: modalOpen 0.3s ease forwards;
+}
+.js_modalWrap.active2 {
+  animation: modalClose 0.3s ease forwards;
+}
+.js_modalBG {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.js_modalContInner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 720px;
+  max-width: 100%;
+  background-color: #fff;
+  max-height: 600px;
+  padding: 40px;
+}
+.js_modalCont {
+  max-height: 520px;
+}
+.js_modalCont > * + * {
+  margin-top: 0;
+}
+.js_modalContInner > .js_modalClose + * {
+  margin-top: 0;
+}
+.js_modalClose {
+  display: block;
+  position: absolute;
+  top: 10.5px;
+  right: 10.5px;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1001;
+}
+.js_modalClose::before,
+.js_modalClose::after {
+  content: "";
+  background-color: #222;
+  position: absolute;
+  top: -5px;
+  right: 10px;
+  width: 1px;
+  height: 30px;
+}
+.js_modalClose::before {
+  transform: rotate(45deg);
+}
+.js_modalClose::after {
+  transform: rotate(-45deg);
+}
+@keyframes modalOpen {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    z-index: 1000;
+  }
+}
+@keyframes modalClose {
+  0% {
+    opacity: 1;
+    z-index: 1000;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ==========================
+  コンテンツの中身
+========================== */
+.ly_inner {
+  width: 100%;
+  max-width: 1080px;
+  margin: 100px auto;
+  padding: 40px;
+  background-color: #ccc;
+}
+.ly_inner h2 {
+  font-size: 150%;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.md_textblock > * + * {
+  margin-top: 10px;
+}
+.md_textblock > * + .js_modalBtnWrap {
+  margin-top: 20px;
+}
+table {
+  width: 100%;
+}
+table th,
+table td {
+  border: 1px solid #222;
+  padding: 10px;
+}
+table th {
+  width: 20%;
+  background-color: #ccc;
+  white-space: nowrap;
+}
+.md_linkBtnWrap {
+  width: 300px;
+  max-width: 100%;
+  margin: 10px auto 0;
+  text-align: center;
+}
+.md_linkBtnCont {
+  display: block;
+  color: #222;
+  border: 1px solid #222;
+  padding: 15px 5px;
+  transition: 0.3s;
+}
+.md_linkBtnCont:hover,
+.md_linkBtnCont:focus {
+  color: #fff;
+  background-color: #222;
+}
+
+/* PC幅に適用 */
+@media (min-width: 768px) {
+  .hp_sp {
+    display: none !important;
+  }
+}
+/* スマホ幅に適用 */
+@media (max-width: 767px) {
+  .hp_pc {
+    display: none !important;
+  }
+  .js_modalContInner {
+    max-height: 400px;
+    padding: 20px;
+  }
+  .js_modalCont {
+    max-height: 360px;
+  }
+  .js_modalClose {
+    top: -30px;
+  }
+  .js_modalClose::before,
+  .js_modalClose::after {
+    background-color: #fff;
+  }
+}
+
 /*contactの装飾*/
 .contact{
   text-align: center;
-  padding-bottom: 100px;
+  padding-bottom: 50px;
   background-image: url(images/p0113_m.jpg);
-}
-
-.wrapper{
-  min-height: 100vh;/*①高さの最小値*/
-  position: relative;/*②相対位置*/
 }
 
 .center {
   text-align: center;
 }
 
-table {
-  margin: auto;
+.Form {
+  margin-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 720px;
+}
+@media screen and (max-width: 480px) {
+  .Form {
+    margin-top: 40px;
+  }
+}
+.Form-Item {
+
+  padding-top: 24px;
+  padding-bottom: 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 480px) {
+  .Form-Item {
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    flex-wrap: wrap;
+  }
+}
+
+.Form-Item:nth-child(5) {
+
+}
+
+
+.Form-Item-Label {
+  width: 100%;
+  max-width: 248px;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+  font-size: 18px;
+}
+@media screen and (max-width: 480px) {
+  .Form-Item-Label {
+    max-width: inherit;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+  }
+}
+.Form-Item-Label.isMsg {
+  margin-top: 8px;
+  margin-bottom: auto;
+}
+@media screen and (max-width: 480px) {
+  .Form-Item-Label.isMsg {
+    margin-top: 0;
+  }
+}
+.Form-Item-Label-Required {
+  border-radius: 6px;
+  margin-right: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 48px;
+  display: inline-block;
+  text-align: center;
+  background: #545454;
+  color: #fff;
+  font-size: 14px;
+}
+@media screen and (max-width: 480px) {
+  .Form-Item-Label-Required {
+    border-radius: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    width: 32px;
+    font-size: 10px;
+  }
+}
+.Form-Item-Input {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-left: 40px;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: 48px;
+  flex: 1;
+  width: 100%;
+  max-width: 410px;
+  background: #eaedf2;
+  font-size: 18px;
+}
+@media screen and (max-width: 480px) {
+  .Form-Item-Input {
+    margin-left: 0;
+    margin-top: 18px;
+    height: 40px;
+    flex: inherit;
+    font-size: 15px;
+  }
+}
+.Form-Item-Textarea {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-left: 40px;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: 216px;
+  flex: 1;
+  width: 100%;
+  max-width: 410px;
+  background: #eaedf2;
+  font-size: 18px;
+}
+@media screen and (max-width: 480px) {
+  .Form-Item-Textarea {
+    margin-top: 18px;
+    margin-left: 0;
+    height: 200px;
+    flex: inherit;
+    font-size: 15px;
+  }
+}
+.Form-Btn {
+  border-radius: 6px;
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 280px;
+  display: block;
+  letter-spacing: 0.05em;
+  background: #545454;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+}
+@media screen and (max-width: 480px) {
+  .Form-Btn {
+    margin-top: 24px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 160px;
+    font-size: 16px;
+  }
 }
 
 /*星評価(skill)*/
@@ -208,13 +574,6 @@ table {
   }
 }
 
-/*フッター*/
-.footer {
-  text-align: center;
-  position: fixed;
-  background-color: beige;
-}
-
 /* ヘッダー */
 
 /*余白*/
@@ -230,8 +589,9 @@ table {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 999;
+  z-index: 99;
 }
+
 
 .header__inner {
   padding: 0 20px;
@@ -401,7 +761,10 @@ table {
 /* ハンバーガーメニュークリック後のスタイル */
 .header__nav.active {
   transform: translateX(0);
-  background-image: url(images/p0476_s.jpg);
+  background-color: beige;
+  /*
+  background-image: url(images/p0474_s.jpg);
+  */
 }
 
 .hamburger.active span:nth-child(1) {
@@ -454,6 +817,7 @@ table {
 }
 
 .button03:hover{
+  background-image: url(images/github-mark-white.png);
   background-color: #424242;
   transition: .5s;
 }
@@ -493,3 +857,18 @@ button:hover:before,button:hover:after{
   width:100%;
   transition:800ms ease all;
 }
+
+.footer {
+  padding-top: 30px;
+  text-align: center;
+  font-size: 40px;
+  width: 100%;
+  height: 100px;
+  background-image: url(images/p0499_m.jpg);
+}
+
+ .footer .copyright {
+  font-size: 20px;
+  margin: 0;
+  padding: 20px 0 0 0;
+ }
