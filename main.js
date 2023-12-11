@@ -6,17 +6,8 @@ const instagram = document.querySelector('#js-instagram');
 const github = document.querySelector('#js-github');
 const home = document.querySelector('#js-home');
 
-/*
-// icon、モダル、モダルの閉じるボタン、オーバーレイを変数に格納
-const btn = document.querySelectorAll('.detail-icon');
-const modal = document.querySelectorAll('.modal');
-const closeBtn = document.querySelectorAll('.close');
-const overlay = document.querySelectorAll('.overlay');
-const body = document.querySelector('body');
-*/
 
-
-//スクロール
+/*  スクロール  */
 const scorrllLinks = document.querySelectorAll('a[href^="#"]');
 scorrllLinks.forEach((scorrllLink) => {
   scorrllLink.addEventListener("click", (e) => {
@@ -33,12 +24,19 @@ scorrllLinks.forEach((scorrllLink) => {
   });
 });
 
+/*  ハンバーガーメニュー  */
 ham.addEventListener('click', function () {
   ham.classList.toggle('active');
   nav.classList.toggle('active');
 });
 
-// モーダル（ポップアップ）
+/*  ハンバーガーメニュー押したら閉じる  */
+$('.nav-items__item').on('click', function() {
+  $('.header__nav').removeClass('active');
+  $('.hamburger').removeClass('active');
+})
+
+/*  モーダル（ポップアップ) */
 const modalBtn = document.querySelectorAll('.js_modalBtnCont');
 const modalWindow = document.querySelectorAll('.js_modalWrap');
 const modalClose = document.querySelectorAll('.js_modalClose');
@@ -75,6 +73,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+/*  アニメーション  */
 $(window).on('load scroll', function (){
 
   var box = $('.fadein');
@@ -93,6 +92,7 @@ $(window).on('load scroll', function (){
 
 });
 
+/*  リンク制御  */
 $('a[href^="#"]').click(function(){
   var headerHeight = $(".header").outerHeight(); //ナビゲーションの高さを取得
   var href = $(this).attr("href");
@@ -101,3 +101,32 @@ $('a[href^="#"]').click(function(){
   $("html, body").animate({ scrollTop: position }, 500, "swing"); //500 ←スクロールのスピード
   return false;
 });
+
+/*  スマホのホバー  */
+$('.mobile-hover')
+    .bind('touchstart', function(){
+        $(this).addClass('hover');
+    }).bind('touchend', function(){
+        $(this).removeClass('hover');
+});
+
+/*  Contactフォーム */
+let submitted = false;
+const onloadFrame = () => {
+// 送信完了の場合に指定ページに遷移させる
+if (submitted) {
+  window.location = "thanks.html";
+  }
+}
+
+/*  ページトップボタン  */
+// セレクタ名（.pagetop）に一致する要素を取得
+const pagetop_btn = document.querySelector(".pagetop");
+
+// .pagetopをクリックしたら
+pagetop_btn.addEventListener("click", scroll_top);
+
+// ページ上部へスムーズに移動
+function scroll_top() {
+  window.scroll({ top: 0, behavior: "smooth" });
+}
