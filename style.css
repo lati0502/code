@@ -159,15 +159,13 @@ h2{
 
 .works-container{
   width: 90%;
-  margin: 0 auto;
+  margin: 0  auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
 .work-container{
-  justify-content: center;
-  margin: 30px;
 }
 
 .work-title{
@@ -180,7 +178,7 @@ h2{
   justify-content: center;
 }
 
-.todo, .auto, .oni{
+.todo, .auto, .oni, .bot, .news{
   padding: 20px;
   width: 150px;
   height: 200px;
@@ -188,7 +186,7 @@ h2{
   overflow: hidden;
 }
 
-.todo:hover, .auto:hover, .oni:hover{
+.todo:hover, .auto:hover, .oni:hover, .bot:hover, .news:hover{
 	transform:scale(1.1);
 	transition:0.3s;
 }
