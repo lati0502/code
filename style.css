@@ -520,6 +520,11 @@ table th {
   font-weight: bold;
   font-size: 20px;
 }
+
+.Form-Btn:hover {
+  background: #fff;
+  color: #000;
+}
 @media screen and (max-width: 480px) {
   .Form-Btn {
     margin-top: 24px;
