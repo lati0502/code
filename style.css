@@ -186,7 +186,7 @@ h2{
   overflow: hidden;
 }
 
-.todo:hover, .auto:hover, .oni:hover, .bot:hover, .news:hover{
+.todo:hover, .auto:hover, .bot:hover, .news:hover{
 	transform:scale(1.1);
 	transition:0.3s;
 }
